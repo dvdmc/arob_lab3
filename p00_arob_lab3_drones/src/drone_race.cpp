@@ -143,6 +143,8 @@ void DroneRace::generateTrajectoryExample_() {
 
     //Position constraint
     middle.addConstraint(mav_trajectory_generation::derivative_order::POSITION, Eigen::Vector3d(1,2,3));
+    // Velocity constraint (optional)
+    middle.addConstraint(mav_trajectory_generation::derivative_order::VELOCITY, Eigen::Vector3d(1,0,0));
     vertices.push_back(middle);
 
     end.makeStartOrEnd(Eigen::Vector3d(2,1,5), derivative_to_optimize);
@@ -154,7 +156,13 @@ void DroneRace::generateTrajectoryExample_() {
     const double a_max = 2.0;
     segment_times = estimateSegmentTimes(vertices, v_max, a_max);
     cout << "Segment times = " << segment_times.size() << endl;
-    
+
+    // Manually set the segment times (optional)
+    // segment_times.clear();
+    // segment_times.push_back(1.0);
+    // segment_times.push_back(2.5);
+    // ... as many times as vertex-1
+
     // Solve the optimization problem
     const int N = 10; //Degree of the polynomial, even number at least two times the highest derivative
     mav_trajectory_generation::PolynomialOptimization<N> opt(dimension);
