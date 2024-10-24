@@ -30,6 +30,8 @@ For stopping the container run on the **repo** root folder (not inside the conta
  docker compose down
  ```
  ## Instructions for the exercises
+
+ > **!!! IMPORTANT: REMEMBER TO ADD THE POSITION CONTROL IN HECTOR QUADROTOR**
  
  1. The Docker includes the `hector_quadrotor` repository so you don't have to add any dependencies. You will have to explore them with `cat`, `nano`, or `vim`. Feel free to clone it somwhere else if you want to explore it with VSCode.
  
